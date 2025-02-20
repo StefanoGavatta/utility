@@ -5,9 +5,8 @@ extends Node2D
 
 var costo: int
 var sprite: Texture
-var comprato = func():
-	$".".hide() 
-	$Button.queue_free()
+var comprato: bool = false
+
 
 func _ready() -> void:
 	trova_dati()
@@ -23,7 +22,13 @@ func trova_dati():
 	
 func compila_dati():
 	$Costo.text = str(costo)
-
+	#$immagine.texture = sprite
 
 func _on_button_pressed() -> void:
-	comprato.call()
+	comprato = true
+	nascondi()
+	print_rich("oggetto[color=aqua] "+nome+" [color=white]comprato")
+
+func nascondi():
+	$".".hide() 
+	$Button.queue_free()
